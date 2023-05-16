@@ -3,6 +3,8 @@ package models
 import (
 	"time"
 
+	"github.com/jinzhu/gorm/dialects/postgres"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"gorm.io/gorm"
 )
 
@@ -27,7 +29,7 @@ type Data struct {
 }
 
 type Auditoria struct {
-	ID               uint `json:"id" gorm:"primaryKey"`
+	gorm.Model
 	CreatedAt        time.Time
 	UsuarioRefer     int         `json:"usuario_id"`
 	Usuario          Usuario     `json:"usuario" gorm:"foreignKey:UsuarioRefer"`
@@ -36,4 +38,6 @@ type Auditoria struct {
 	Permissions      Permissions `json:"permissions" gorm:"foreignKey:PermissionsRefer"`
 	DataRefer        int         `json:"data_id"`
 	Data             Data        `json:"data" gorm:"foreignKey:DataRefer"`
+	// DataAuditoria    pkg.JSONMap `json:"data_auditoria" gorm:"type:jsonb"`
+	DataAuditoria postgres.Jsonb `json:"data_auditoria"`
 }

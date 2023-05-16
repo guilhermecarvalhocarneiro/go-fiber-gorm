@@ -8,11 +8,9 @@ import (
 
 func CreateAuditoria(c *fiber.Ctx) error {
 	var auditoria models.Auditoria
-
 	if err := c.BodyParser(&auditoria); err != nil {
 		return c.Status(400).JSON(fiber.Map{"error": err.Error()})
 	}
-
 	database.Database.Db.Create(&auditoria)
 	return c.Status(200).JSON(auditoria)
 }

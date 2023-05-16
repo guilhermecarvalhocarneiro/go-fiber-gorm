@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/v1/auditoria
 
 ###
-GET http://localhost:3000/api/v1/auditoria/35
+GET http://localhost:3000/api/v1/auditoria/5
 
 ### Create Auditoria
 POST http://localhost:3000/api/v1/auditoria
@@ -40,5 +40,20 @@ Content-Type: application/json
     "data": {
         "data": "Registrando uma nova auditoria"
     },
-    "ip": "192.168.1.1"
+    "data_auditoria": {
+        "usuario": {
+            "first_name": "Gui",
+            "last_name": "Carvalho",
+            "email": "guilherme.carvalho.carneiro@email.com",
+            "django_username": "guilherme_carvalho_carneiro"
+        },
+        "action": "create",
+    "table": "users",
+        "permissions": {
+            "name": "Can add user",
+            "app_name": "auth",
+            "model_name": "user"
+        }
+    },
+    "ip_address": "192.168.1.1"
 }   
