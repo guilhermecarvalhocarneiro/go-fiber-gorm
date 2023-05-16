@@ -1,0 +1,44 @@
+###
+GET http://localhost:3000/api/v1/healtcheck
+
+###
+GET http://localhost:3000/api/v1/users/1
+
+### Post User Create Data
+POST http://localhost:3000/api/v1/users
+Content-Type: application/json
+
+{
+    "first_name": "John",
+    "last_name": "Doe"
+}
+
+### 
+GET http://localhost:3000/api/v1/auditoria
+
+###
+GET http://localhost:3000/api/v1/auditoria/35
+
+### Create Auditoria
+POST http://localhost:3000/api/v1/auditoria
+Content-Type: application/json
+
+{
+    "usuario": {
+        "first_name": "Gui",
+        "last_name": "Carvalho",
+        "email": "guilherme.carvalho.carneiro@email.com",
+        "django_username": "guilherme_carvalho_carneiro"
+    },
+    "permissions": {
+        "name": "Can add user",
+        "app_name": "auth",
+        "model_name": "user"
+    },
+    "action": "create",
+    "table": "users",
+    "data": {
+        "data": "Registrando uma nova auditoria"
+    },
+    "ip": "192.168.1.1"
+}   
