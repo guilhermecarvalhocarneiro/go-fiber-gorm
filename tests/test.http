@@ -17,7 +17,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/v1/auditoria
 
 ###
-GET http://localhost:3000/api/v1/auditoria/5
+GET http://localhost:3000/api/v1/auditoria/1
 
 ### Create Auditoria
 POST http://localhost:3000/api/v1/auditoria

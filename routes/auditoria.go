@@ -25,5 +25,9 @@ func GetAuditoria(c *fiber.Ctx) error {
 	id := c.Params("id")
 	auditoria := models.Auditoria{}
 	database.Database.Db.Find(&auditoria, id)
+	// Verificando se retornou algum registro
+	if auditoria.ID == 0 {
+		return c.Status(404).JSON(fiber.Map{"error": "Not found"})
+	}
 	return c.Status(200).JSON(auditoria)
 }
