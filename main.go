@@ -19,21 +19,6 @@ func setupRoutes(app *fiber.App) {
 
 	v1 := api.Group("/v1")
 	v1.Get("/healtcheck", healtcheck)
-	// User endpoints
-	v1.Post("/users", routes.CreateUser)
-	v1.Get("/users", routes.GetUsers)
-	v1.Get("/users/:id", routes.GetUser)
-	v1.Delete("/users/:id", routes.DeleteUser)
-	// Product endpoints
-	v1.Post("/products", routes.CreateProduct)
-	v1.Get("/products", routes.GetProducts)
-	v1.Get("/products/:id", routes.GetProduct)
-	v1.Put("/products/:id", routes.UpdateProduct)
-
-	// Order endpoints
-	v1.Post("/orders", routes.CreateOrder)
-	v1.Get("/orders", routes.GetOrders)
-	v1.Get("/orders/:id", routes.GetOrder)
 
 	// Auditoria endpoints
 	v1.Post("/auditoria", routes.CreateAuditoria)
