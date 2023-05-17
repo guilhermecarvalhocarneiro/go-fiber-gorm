@@ -9,17 +9,16 @@ import (
 	"github.com/sixfwa/fiber-gorm/routes"
 )
 
-func welcome(c *fiber.Ctx) error {
+func healtcheck(c *fiber.Ctx) error {
 	return c.Status(200).JSON("OK")
 }
 
 func setupRoutes(app *fiber.App) {
-	// Welcome endpoint
 	// Agrupando pela versão da API
 	api := app.Group("/api")
 
 	v1 := api.Group("/v1")
-	v1.Get("/healtcheck", welcome)
+	v1.Get("/healtcheck", healtcheck)
 	// User endpoints
 	v1.Post("/users", routes.CreateUser)
 	v1.Get("/users", routes.GetUsers)
@@ -39,7 +38,8 @@ func setupRoutes(app *fiber.App) {
 	// Auditoria endpoints
 	v1.Post("/auditoria", routes.CreateAuditoria)
 	v1.Get("/auditoria", routes.GetAuditorias)
-	v1.Get("/auditoria/:id", routes.GetAuditoria)
+	v1.Get("/auditoria/get/:id", routes.GetAuditoria)
+	v1.Get("/auditoria/count", routes.GetCountRegistersAuditoria)
 }
 
 func main() {
